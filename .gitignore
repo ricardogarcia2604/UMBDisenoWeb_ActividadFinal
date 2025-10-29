@@ -1,0 +1,9 @@
+.myvenv/
+__pycache__/
+.env
+test/__pycache__/
+instance/
+app/config/__pycache__/
+app/controllers/__pycache__/
+app/models/__pycache__/
+app/utils/__pycache__/
