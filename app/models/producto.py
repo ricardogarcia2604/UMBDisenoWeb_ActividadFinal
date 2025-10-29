@@ -3,6 +3,8 @@ from app.config.db import db
 from funciones import costos, las_calorías, rentabilidad
 
 class Producto(db.Model):
+
+    ##Creacion de base de datos
     __tablename__ = "productos"
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True, nullable= False)
@@ -12,11 +14,10 @@ class Producto(db.Model):
     volumen = db.Column(db.Float, nullable=True)
     tipo = db.Column(db.Enum("Copa", "Malteada", name="tipo_producto"), nullable=False)
     heladeria_id = db.Column(db.Integer, db.ForeignKey("heladeria.id"))
-
     producto_ingredientes = relationship("Producto_Ingrediente", back_populates="producto")
     heladeria = relationship("Heladeria", back_populates="productos")
 
-
+    ##Creacion de funciones o metodos.
     def obtener_ingredientes(self):
         return [pi.ingrediente for pi in self.producto_ingredientes]
 
@@ -32,7 +33,7 @@ class Producto(db.Model):
         return rentabilidad(self)
 
 
-
+##Creacion de contenio de la base de datos
     @classmethod
     def create_test_products(cls):
         if not cls.query.first():

@@ -23,7 +23,7 @@ def login():
         elif current_user.es_empleado:
             return redirect(url_for('index.home_employee'))
         elif current_user.es_cliente:
-            return redirect(url_for('index.home_employee'))
+            return redirect(url_for('index.home_client'))
         else:    
             return redirect(url_for('index.home_non_user'))
     else:
@@ -46,7 +46,7 @@ def auth ():
         elif user.es_empleado:
             return redirect(url_for('index.home_employee'))
         elif user.es_cliente:
-            return redirect(url_for('index.home_employee'))
+            return redirect(url_for('index.home_client'))
         else:
             return redirect(url_for('index.home_non_user'))
     else:

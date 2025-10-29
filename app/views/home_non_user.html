@@ -3,11 +3,11 @@
 
 <style>
     nav {
-        background-color: aqua;
+        background-color: #758A93;
     }
 
     #boton_ {
-        background-color: aqua;
+        background-color: #758A93;
     }
         
 </style>
@@ -59,7 +59,7 @@
         </div>
     </header>
 
-    <footer class="text-center mt-4">
+    <footer class="text-center mt-4 fixed-bottom bg-dark">
         {% if current_user.is_authenticated %}
             <a href="{{ url_for('login.logout') }}">Cerrar sesión</a>
         {% endif %}

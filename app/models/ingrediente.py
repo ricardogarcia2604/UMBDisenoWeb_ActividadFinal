@@ -1,7 +1,11 @@
 from sqlalchemy.orm import relationship
 from app.config.db import db
 from funciones import esto_es_sano
+
+## Creacion de objeto ingreiente
 class Ingrediente(db.Model):
+
+    ##Creacion de base de datos
     __tablename__ = "ingredientes"
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True, nullable= False)
@@ -13,11 +17,10 @@ class Ingrediente(db.Model):
     tipo = db.Column(db.Enum("base", "complemento", name="tipo_ingrediente"), nullable=False)
     sabor = db.Column(db.String(100), nullable=True)
     heladeria_id = db.Column(db.Integer, db.ForeignKey("heladeria.id")) 
-
     ingrediente_productos = relationship("Producto_Ingrediente", back_populates="ingrediente")
     heladeria = relationship("Heladeria", back_populates="ingredientes")
 
-
+##Creacion de funciones o metodos.
     def abastecer(self):
         if self.tipo == 'complemento':
             self.inventario += 10
@@ -25,7 +28,6 @@ class Ingrediente(db.Model):
         else:
             self.inventario += 5
             return  False
-
 
     def es_sano(self) -> bool:
         return esto_es_sano(self.calorias, self.es_vegetariano)
@@ -37,7 +39,7 @@ class Ingrediente(db.Model):
         else:
             raise ValueError (self.nombre)
 
-
+##Creacion de contenio de la base de datos
     @classmethod
     def create_test_ingredientes(cls):
         if not cls.query.first():

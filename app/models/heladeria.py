@@ -3,12 +3,12 @@ from app.config.db import db
 from funciones import mejor_producto
 
 class Heladeria(db.Model):
+    ##Creacion de base de datos
     __tablename__ = "heladeria"
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     contador_ventas_dia = db.Column(db.Integer, default=0)
     total_ventas = db.Column(db.Float, default=0)
-
     ingredientes = relationship("Ingrediente", back_populates="heladeria")
     productos = relationship("Producto", back_populates="heladeria")
 
@@ -35,7 +35,7 @@ class Heladeria(db.Model):
         self.contador_ventas_dia += 1
         return "¡Vendido!"
     
-
+##Creacion de contenio de la base de datos
     @classmethod
     def create_test_heladeria(cls):
         if not cls.query.first():

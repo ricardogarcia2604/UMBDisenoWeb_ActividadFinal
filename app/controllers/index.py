@@ -18,7 +18,7 @@ def index():
         elif current_user.es_empleado:
             return redirect(url_for('index.home_employee'))
         elif current_user.es_cliente:
-            return redirect(url_for('index.home_employee'))
+            return redirect(url_for('index.home_client'))
     else:
         return redirect(url_for('index.home_non_user'))
         
@@ -40,6 +40,12 @@ def home_admin():
 @roles_required("empleado")
 def home_employee():
     return render_template("home_employees.html", current_user = current_user)
+
+#Client home HTML
+@index_bp.route("home_client")
+@roles_required("cliente")
+def home_client():
+    return render_template("home_client.html", current_user = current_user)
 
 #Non user home HTML
 @index_bp.route("home_non_user")

@@ -2,17 +2,17 @@ from app.config.db import db
 from flask_login import UserMixin
 
 class Usuario(db.Model, UserMixin):
+    ##Creacion de base de datos
     __tablename__ ='usuario'
-    #PK
+    
     id = db.Column(db.Integer, primary_key = True, nullable = False ,autoincrement = True)
-    #Columns
     username = db.Column (db.String(500))
     password  = db.Column (db.String(500))
     es_admin = db.Column (db.Boolean)
     es_empleado = db.Column (db.Boolean)
     es_cliente = db.Column (db.Boolean)
 
-
+##Creacion de usuarios y su respectiva contraseña
     @classmethod
     def create_test_users(cls):
         if not cls.query.first():

@@ -3,7 +3,6 @@ from app.config.config import Config
 from app.config.config import SK
 from app.config.db import db
 from app.config.routes import register_routes
-
 from app.config.db import db
 from app.models.ingrediente import Ingrediente
 from app.models.producto import Producto

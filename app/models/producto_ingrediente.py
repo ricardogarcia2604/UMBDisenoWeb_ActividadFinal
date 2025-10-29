@@ -1,7 +1,10 @@
 from sqlalchemy.orm import relationship
 from app.config.db import db
 
+##Creacion e Objeto llamado producto Ingredientes
 class Producto_Ingrediente(db.Model):
+
+    ##Creacion de base de datos
     __tablename__ = "producto_Ingrediente"
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True, nullable= False)
@@ -11,6 +14,7 @@ class Producto_Ingrediente(db.Model):
     producto = relationship("Producto", back_populates="producto_ingredientes")
     ingrediente = relationship("Ingrediente", back_populates="ingrediente_productos")
 
+##Creacion de contenio de la base de datos
     @classmethod
     def create_test_conections(cls):
         if not cls.query.first():
