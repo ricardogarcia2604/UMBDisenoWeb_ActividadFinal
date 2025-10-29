@@ -1,4 +1,4 @@
-#Punto 1 | ¿Esto es Sano?
+#Punto 1 | ¿Esto es Sano??
 def esto_es_sano(calorias, es_vegetariano)->bool:
     if calorias < 100 or es_vegetariano:
         return True
@@ -6,7 +6,7 @@ def esto_es_sano(calorias, es_vegetariano)->bool:
         raise ValueError  (False)
     
 
-#Punto 2 | Las Calorías
+#Punto 2 |  Calorías
 def las_calorías(ingredientes) -> float:
     total_kcal = round(sum(ingrediente.calorias for ingrediente in ingredientes), 2)
     return total_kcal
