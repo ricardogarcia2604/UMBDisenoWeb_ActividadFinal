@@ -7,7 +7,8 @@ from app.models.producto_ingrediente import Producto_Ingrediente
 from app.models.heladeria import Heladeria
 from app.utils.decorators import roles_required
 
-index_bp = Blueprint ("index", __name__, url_prefix= "/index")
+#index_bp = Blueprint ("index", __name__, url_prefix= "/index")
+index_bp = Blueprint ("index", __name__)
 
 #Index
 @index_bp.route("/")
@@ -30,24 +31,24 @@ def menu():
     return render_template("menu.html", productos = productos)
 
 #Admin home HTML
-@index_bp.route("home_admin")
+@index_bp.route("/home_admin")
 @roles_required("admin")
 def home_admin():
     return render_template("home_admin.html", current_user = current_user)
 
 #Employee home HTML
-@index_bp.route("home_employee")
+@index_bp.route("/home_employee")
 @roles_required("empleado")
 def home_employee():
     return render_template("home_employees.html", current_user = current_user)
 
 #Client home HTML
-@index_bp.route("home_client")
+@index_bp.route("/home_client")
 @roles_required("cliente")
 def home_client():
     return render_template("home_client.html", current_user = current_user)
 
 #Non user home HTML
-@index_bp.route("home_non_user")
+@index_bp.route("/home_non_user")
 def home_non_user():
     return render_template("home_non_user.html", current_user = current_user)
